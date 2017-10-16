@@ -49,6 +49,6 @@ def write_csv2(filename, content_list):
 if __name__ == "__main__":
 
     # 读出json数据内容
-    content_list = read_json('lagou_info_lin3.json')
+    content_list = read_json('douyuzhubo.json')
     # 将数据写入到csv文件
-    write_csv( "lagou_info_lin3.csv", content_list)
+    write_csv( "douyuzhubo.csv", content_list)
