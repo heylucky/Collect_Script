@@ -1,0 +1,23 @@
+## javascript 动态加载js文件
+
+原理很简单,创建一个 script 节点,给节点赋予 script 的属性,然后 append 到 dom 的 head 标签中.
+
+```
+function loadJS(url){
+    var Script = document.createElement('script');
+    Script.setAttribute('src', url);
+    Script.setAttribute('type', 'text/javascript');
+    document.body.appendChild(Script);
+    return Script;
+}```
+
+
+如果我们同时加载多个 javascript 文件
+
+```loadJS('a.js');
+   loadJS('b.js');```
+   
+上面的效果是,a.js 和 b.js 文件会被异步同时加载,如果 b.js 文件比 a.js 文件小的话,很可能先加载执行 b.js ,完全不会按照书写结果加载执行
+
+所以,如果你的 b.js 文件有依赖 a.js 的东西,那么就会报错,因为解释执行b.js 的时候,a.js 还在加载中.
+
